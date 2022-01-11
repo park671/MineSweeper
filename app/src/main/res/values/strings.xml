@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">扫雷</string>
+    <string name="exit_warning">当前正在游戏中，退出不能保存当前成绩，确认退出吗？</string>
+</resources>

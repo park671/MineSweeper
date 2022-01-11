@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <Button
+        android:id="@+id/easyButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="简单（9x9, 10个雷）"
+        android:textAllCaps="false" />
+
+    <Button
+        android:id="@+id/midButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="中等（16x16, 40个雷）"
+        android:textAllCaps="false" />
+
+    <Button
+        android:id="@+id/hardButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="困难（20x20, 80个雷）"
+        android:textAllCaps="false" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:id="@+id/mapSizeEditText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="地图大小" />
+
+        <EditText
+            android:id="@+id/boomNumEditText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="雷数" />
+
+        <Button
+            android:id="@+id/customButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="自定义"
+            android:textAllCaps="false" />
+    </LinearLayout>
+
+</LinearLayout>
