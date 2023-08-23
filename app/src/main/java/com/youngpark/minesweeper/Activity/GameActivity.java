@@ -1,16 +1,16 @@
 package com.youngpark.minesweeper.Activity;
 
+import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.media.AudioAttributes;
 import android.media.SoundPool;
+import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
@@ -32,7 +32,7 @@ import java.text.DecimalFormat;
  * 负责游戏相关活动，初始化各类素材
  */
 
-public class GameActivity extends AppCompatActivity {
+public class GameActivity extends Activity {
 
     public volatile boolean started = false;
 

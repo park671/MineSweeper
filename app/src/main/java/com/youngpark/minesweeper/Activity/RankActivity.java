@@ -1,8 +1,8 @@
 package com.youngpark.minesweeper.Activity;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ProgressBar;
@@ -18,7 +18,7 @@ import com.youngpark.minesweeper.R;
  * 排行榜
  */
 
-public class RankActivity extends AppCompatActivity {
+public class RankActivity extends Activity {
 
     private ProgressBar top1ProgressBar, top2ProgressBar, top3ProgressBar;
     private TextView top1TextView, top2TextView, top3TextView, avgTextView;

@@ -1,9 +1,9 @@
 package com.youngpark.minesweeper.Activity;
 
+import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -21,7 +21,10 @@ import com.youngpark.minesweeper.R;
  * 主界面
  */
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends Activity {
+
+    private Button easyButton, midButton, hardButton, customButton;
+    private EditText mapSizeEditText = null, boomNumEditText = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,53 +33,51 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setGame() {
-        final Button easyButton, midButton, hardButton, customButton;
-        final EditText mapSizeEditText, boomNumEditText;
+
 
         AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(MainActivity.this);
 
         View dialogView = View.inflate(MainActivity.this, R.layout.dialog_choose, null);
 
         easyButton = dialogView.findViewById(R.id.easyButton);
-        midButton = dialogView.findViewById(R.id.midButton);
-        hardButton = dialogView.findViewById(R.id.hardButton);
-        customButton = dialogView.findViewById(R.id.customButton);
-
-        mapSizeEditText = dialogView.findViewById(R.id.mapSizeEditText);
-        boomNumEditText = dialogView.findViewById(R.id.boomNumEditText);
-
-        Button.OnClickListener clickListener = new View.OnClickListener() {
+        easyButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                switch (v.getId()) {
-                    case R.id.easyButton:
-                        GameEngine.mapSize = 9;
-                        GameEngine.boomNum = 10;
-                        Toast.makeText(MainActivity.this, "已选简单", Toast.LENGTH_SHORT).show();
-                        break;
-                    case R.id.midButton:
-                        GameEngine.mapSize = 16;
-                        GameEngine.boomNum = 40;
-                        Toast.makeText(MainActivity.this, "已选中等", Toast.LENGTH_SHORT).show();
-                        break;
-                    case R.id.hardButton:
-                        GameEngine.mapSize = 20;
-                        GameEngine.boomNum = 80;
-                        Toast.makeText(MainActivity.this, "已选困难", Toast.LENGTH_SHORT).show();
-                        break;
-                    case R.id.customButton:
-                        GameEngine.boomNum = Integer.parseInt(boomNumEditText.getText().toString());
-                        GameEngine.mapSize = Integer.parseInt(mapSizeEditText.getText().toString());
-                        Toast.makeText(MainActivity.this, "已选:" + GameEngine.mapSize + ", " + GameEngine.boomNum, Toast.LENGTH_SHORT).show();
-                        break;
-                }
+                GameEngine.mapSize = 9;
+                GameEngine.boomNum = 10;
+                Toast.makeText(MainActivity.this, "已选简单", Toast.LENGTH_SHORT).show();
             }
-        };
+        });
+        midButton = dialogView.findViewById(R.id.midButton);
+        midButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                GameEngine.mapSize = 16;
+                GameEngine.boomNum = 40;
+                Toast.makeText(MainActivity.this, "已选中等", Toast.LENGTH_SHORT).show();
+            }
+        });
+        hardButton = dialogView.findViewById(R.id.hardButton);
+        hardButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                GameEngine.mapSize = 20;
+                GameEngine.boomNum = 80;
+                Toast.makeText(MainActivity.this, "已选困难", Toast.LENGTH_SHORT).show();
+            }
+        });
+        customButton = dialogView.findViewById(R.id.customButton);
+        mapSizeEditText = dialogView.findViewById(R.id.mapSizeEditText);
+        boomNumEditText = dialogView.findViewById(R.id.boomNumEditText);
+        customButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                GameEngine.boomNum = Integer.parseInt(boomNumEditText.getText().toString());
+                GameEngine.mapSize = Integer.parseInt(mapSizeEditText.getText().toString());
+                Toast.makeText(MainActivity.this, "已选:" + GameEngine.mapSize + ", " + GameEngine.boomNum, Toast.LENGTH_SHORT).show();
+            }
+        });
 
-        easyButton.setOnClickListener(clickListener);
-        midButton.setOnClickListener(clickListener);
-        hardButton.setOnClickListener(clickListener);
-        customButton.setOnClickListener(clickListener);
 
         dialogBuilder.setView(dialogView);
 
